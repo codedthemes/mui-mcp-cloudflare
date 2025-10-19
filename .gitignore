@@ -30,6 +30,5 @@ wrangler.toml
 worker-configuration.d.ts
 
 # Environment
-.env
-.env.local
 .env.*.local
+config.bat

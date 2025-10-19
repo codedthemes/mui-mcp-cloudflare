@@ -4,7 +4,7 @@ A Model Context Protocol (MCP) server providing comprehensive access to the [Mat
 
 ## 🚀 Quick Deploy
 
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/YOUR_USERNAME/mui-mcp-cloudflare)
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/jgentes/mui-mcp-cloudflare)
 
 This will deploy your Material UI MCP server to a URL like: `mui-mcp.<your-account>.workers.dev/sse`
 
@@ -34,18 +34,48 @@ This MCP server gives AI assistants instant access to Material UI's 50+ React co
 
 ## 🔌 Installation
 
-### Option 1: Deploy Your Own (Recommended)
+### Option 1: Quick Start (if you don't want to deploy to Cloudflare or run your own locally)
+
+Use the public Material UI MCP server to get started immediately:
+
+**Claude Code:**
+```bash
+claude mcp add mui npx mcp-remote https://mui-mcp-cloudflare.jgentes.workers.dev/sse
+```
+
+**Cursor:**
+
+**Install in Cursor:**
+
+To install the Material UI MCP Server in Cursor, copy and paste the following link into your browser's address bar:
+
+```
+cursor://anysphere.cursor-deeplink/mcp/install?name=mui&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyJtY3AtcmVtb3RlIiwiaHR0cHM6Ly9tdWktbWNwLWNsb3VkZmxhcmUuamdlbnRlcy53b3JrZXJzLmRldi9zc2UiXX0=
+```
+
+Or manually add to your Cursor settings:
+
+```json
+{
+  "mcpServers": {
+    "mui": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://mui-mcp-cloudflare.jgentes.workers.dev/sse"
+      ]
+    }
+  }
+}
+```
+
+### Option 2: Deploy Your Own
 
 Deploy your own instance to Cloudflare Workers:
 
-1. Fork or clone this repository
-2. Click the "Deploy to Cloudflare Workers" button above or run:
-   ```bash
-   npm install
-   npm run deploy
-   ```
-3. After deployment, your MCP will be available at: `https://mui-mcp-cloudflare.<your-account>.workers.dev/sse`
-4. Connect to Claude Code:
+1. Click the "Deploy to Cloudflare Workers" button at the top
+2. After deployment, your MCP will be available at: `https://mui-mcp-cloudflare.<your-account>.workers.dev/sse`
+3. Connect to Claude Code:
 
 ```bash
 claude mcp add mui npx mcp-remote https://mui-mcp-cloudflare.<your-account>.workers.dev/sse
@@ -67,27 +97,9 @@ Or manually edit your config:
 }
 ```
 
-### Option 2: Install in Cursor
+### Option 3: Local Server
 
-To install the Material UI MCP Server in Cursor, manually add to your Cursor settings:
-
-```json
-{
-  "mcpServers": {
-    "mui": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://mui-mcp-cloudflare.<your-account>.workers.dev/sse"
-      ]
-    }
-  }
-}
-```
-
-### Option 3: Local Development
-
-For running locally using the Wrangler CLI:
+For running using the Wrangler CLI:
 
 ```bash
 # Install dependencies
@@ -121,13 +133,13 @@ claude mcp add mui npx mcp-remote http://localhost:8787/sse
 
 ## 🛠️ How It Works
 
-This MCP server provides structured access to Material UI documentation, helping ensure:
+This MCP server fetches documentation directly from [mui.com](https://mui.com/material-ui/) and provides structured information to AI assistants. It helps ensure:
 
 - ✅ **Consistency** - Correct Material UI component usage across projects
 - ✅ **Efficiency** - Quick component discovery prevents unnecessary custom development
-- ✅ **Accuracy** - Direct links to official documentation ensure proper implementation
-- ✅ **Best Practices** - Includes setup guides, theming, and customization patterns
-- ✅ **Up-to-date** - Always references the latest Material UI documentation
+- ✅ **Accuracy** - Direct access to official documentation ensures proper implementation
+- ✅ **Customization** - Full support for Material UI's theming and styling system
+- ✅ **Best Practices** - Includes accessibility guidelines and proper usage patterns
 
 ## 📚 Example Usage
 
@@ -181,27 +193,7 @@ Use [Conventional Commits](https://www.conventionalcommits.org/) format for auto
 - `chore: update dependencies` - Maintenance tasks
 - `BREAKING CHANGE:` in commit body - Breaking changes (major version bump)
 
-## 🎯 Key Features
-
-- **Comprehensive Coverage**: Access to all 50+ Material UI components
-- **Smart Search**: Find components by category, use case, or name
-- **Setup Guidance**: Installation and configuration instructions
-- **Theming Support**: Complete customization and theming guides
-- **Best Practices**: Material UI-specific patterns and recommendations
-- **Direct Links**: All component info includes links to official documentation
-
-## 📖 Material UI Resources
-
-- [Official Documentation](https://mui.com/material-ui/)
-- [Component Gallery](https://mui.com/material-ui/all-components/)
-- [Customization Guide](https://mui.com/material-ui/customization/how-to-customize/)
-- [Theming](https://mui.com/material-ui/customization/theming/)
-- [Templates](https://mui.com/material-ui/getting-started/templates/)
-- [GitHub Repository](https://github.com/mui/material-ui)
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+See [CHANGELOG.md](./CHANGELOG.md) for release history.
 
 ## 📄 License
 
